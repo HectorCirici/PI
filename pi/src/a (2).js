@@ -1,25 +1,16 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 const { ipcRenderer, contextBridge, ipcMain } = require("electron")
 const { spawn } = require('child_process');
 const path = require('path');
 
 
-const API = {
-    window: {
-        close: () => ipcRenderer.send("close"),
-        minimize: () => ipcRenderer.send("minimize"),
-    },
-}
-
-contextBridge.exposeInMainWorld("app", API);
-
 
 contextBridge.exposeInMainWorld('ipcRenderer', {
-    send: (channel, data) => ipcRenderer.send(channel, data),
-    on: (channel, func) => ipcRenderer.on(channel, (event, ...args) => func(...args)),
+  send: (channel, data) => ipcRenderer.send(channel, data),
+  on: (channel, func) => {
+    ipcRenderer.on(channel, (event, ...args) => func(...args));
+  },
+  
 });
-
 contextBridge.exposeInMainWorld('api', {
   runPythonScript: (args) => { // add an args parameter
     console.log('Running Python script');

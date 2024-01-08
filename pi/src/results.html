@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="results.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">// jajajaj rule succer
+  </head>
+
+  <body>
+    <div id="no">
+      <img src="selso/jajajajaja.png" id="goBack" class="tools">
+
+      <div id="cuadradoResult">
+        <div id="textResult"></div>
+      </div>
+      <img src="selso/trace.png" id="aquila">
+
+      <div id="arriba">
+
+        
+        <div id="menos">
+          <img src="selso/mauricio.png" id="so" class="tools">
+        </div>
+          
+        <div id="x">
+          <img src="selso/x.png" id="sel" class="tools">
+        </div>
+
+        <div id="reloj"></div>
+
+      </div>
+
+      <div id="abajo">Hèctor</div>
+
+    </div>
+
+    <script>
+        // jajajajajajajajajjajajja no hay soccer :(
+          const info_btn = document.getElementById("goBack");
+          info_btn.addEventListener("click", goBack);
+  
+          function goBack() {
+            ipcRenderer.send('iu_pov');
+          }
+    </script>
+    <script>
+      // jajaja ahora si hay soccer, deberia de haber un soccer :| jaja
+      const cuadradoResult = document.getElementById('cuadradoResult');
+
+      console.log('jajaja');
+      window.ipcRenderer.on('jajaja', (event, data) => {
+
+          cuadradoResult.innerText = event;
+      });
+     </script>
+     
+  </body>
+</html>

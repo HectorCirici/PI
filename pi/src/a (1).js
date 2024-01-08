@@ -1,29 +1,28 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const { spawn } = require('child_process');
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
-  app.quit(); 
+  app.quit();
 }
 
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 750,
-    height: 480,
-    resizable: false,
-    maximizable: false,
-    frame: false,
+    width: 800,
+    height: 600,
     webPreferences: {
-      devTools: false,
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true, // enable nodeIntegration
       contextIsolation: true,
     },
   });
 
+  // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  
+
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
@@ -44,36 +43,15 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
+  // dock icon is clicked and there are no other windows open. 2
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
 });
 
 // In this file you can include the rest of your app's specific main process
-ipcMain.on("close", () =>{
-  app.quit();
-});
-
-ipcMain.on("minimize", () =>{
-  BrowserWindow.getFocusedWindow().minimize();
-});
-
-ipcMain.on('mia_pov', () =>{
-  BrowserWindow.getFocusedWindow().loadURL("file://"+__dirname+'/info.html');
-});
-
-ipcMain.on('iu_pov', () =>{
-  BrowserWindow.getFocusedWindow().loadURL("file://"+__dirname+'/index.html');
-});
-
-
-// code. You can also put them in separate files and import them here.
+// code. You can also put them in separate files and import them here. 2
 ipcMain.on('python-data', (event, data) => {
-  let win = BrowserWindow.getFocusedWindow();
-  win.loadURL("file://"+__dirname+'/results.html');
-  
-  win.webContents.on('did-finish-load', () => {
-    event.reply('jajaja', data);
-  });
+  console.log('Received data from Python script: ' + data);
+  event.reply('jajaja', data);
 });

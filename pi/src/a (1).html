@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>💖 Hello World! 2</h1>
+    <p>Welcome to your Electron application.</p>
+    <button id="run-python">Run Python Script</button>
+    <div id="result"></div>
+    <script>
+      let sexo = document.getElementById('result')
+
+      document.getElementById('run-python').addEventListener('click', () => {
+        const args = ['s', 'e', 'xo']; // replace with your actual arguments
+        api.runPythonScript(args);
+      });
+
+      window.ipcRenderer.on('jajaja', (event, data) => {
+        console.log('Received python-data event with data:', data, " sexo ", event); // add this line 2
+        console.log('sexo es',sexo);
+        sexo.innerText = event;
+      });
+
+    </script>
+    <script src="renderer.js"></script>
+  </body>
+</html>

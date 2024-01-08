@@ -2,11 +2,61 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>Calculatrice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    // jajajaj rule succer
   </head>
+
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <div id="no">
+    
+      <div id="cuadrado">
+        <div id="f">
+          <img id="int" src="selso/f.png"> 
+          <div id="inputs">
+            <input type="text" id="max" contenteditable="true" oninput="expandInput()" placeholder="_" class="selso">
+            <input type="text" id="min" contenteditable="true" oninput="expandInput()" placeholder="_" class="selso">
+          </div>
+        </div>
+        
+        <div id="cont_formula">
+          <input type="text" id="formula" contenteditable="true" oninput="expandInput()" placeholder="__">
+        </div>
+
+        <div id="dx">dx</div>
+        <img src="selso/Info.png" id="info" class="tools">
+      </div>
+      <img src="selso/trace.png" id="aquila">
+
+      <div id="arriba">
+
+        
+        <div id="menos">
+          <img src="selso/mauricio.png" id="so" class="tools">
+        </div>
+          
+        <div id="x">
+          <img src="selso/x.png" id="sel" class="tools">
+        </div>
+        <div id="reloj"></div>
+      </div>
+      <div id="abajo">Hèctor</div>
+    </div>
+jajajaja biden soccer
+    <script src="app_funct.js"></script>
+
+     <script>
+      // jajajajajajajajajjajajja no hay soccer :(
+        const info_btn = document.getElementById("info");
+        info_btn.addEventListener("click", show_info);
+
+        function show_info() {
+          ipcRenderer.send('mia_pov');
+        }
+     </script>
   </body>
 </html>

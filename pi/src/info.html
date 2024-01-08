@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="info.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">// jajajaj rule succer
+  </head>
+
+  <body>
+    <div id="no">
+    
+      <div id="cuadrado">
+        Dans les espaces dessous et ci-dessus, saisissez les points entre lesquels vous souhaitez calculer l'intégrale. 
+        Dans l'espace du milieu, entrez la formule de la fonction.
+        Une fois toutes les données saisies, appuyez sur Entrée
+        <img src="selso/Info.png" id="info" class="tools">
+      </div>
+      <img src="selso/trace.png" id="aquila">
+
+      <div id="arriba">
+
+        
+        <div id="menos">
+          <img src="selso/mauricio.png" id="so" class="tools">
+        </div>
+          
+        <div id="x">
+          <img src="selso/x.png" id="sel" class="tools">
+        </div>
+
+        <div id="reloj"></div>
+
+      </div>
+
+      <div id="abajo">Hèctor</div>
+
+    </div>
+jajajaja biden soccer
+    <script src="app_funct.js"></script>
+
+    <script>
+        // jajajajajajajajajjajajja no hay soccer :(
+          const info_btn = document.getElementById("info");
+          info_btn.addEventListener("click", show_info);
+  
+          function show_info() {
+            ipcRenderer.send('iu_pov');
+          }
+       </script>
+     
+  </body>
+</html>
